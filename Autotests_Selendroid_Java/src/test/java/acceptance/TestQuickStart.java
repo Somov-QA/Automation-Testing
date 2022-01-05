@@ -23,11 +23,11 @@ public class TestQuickStart {
     @BeforeTest
     public static void setUp() throws Exception {
         SelendroidConfiguration config = new SelendroidConfiguration();
-        config.addSupportedApp("apk/calc.apk");
+        config.addSupportedApp("selendroid-test-app-0.17.0.apk");
         SelendroidLauncher selendroidServer = new SelendroidLauncher(config);
         selendroidServer.launchSelendroid();
 
-        SelendroidCapabilities caps = new SelendroidCapabilities("com.jee.calc");
+        SelendroidCapabilities caps = new SelendroidCapabilities("io.selendroid.testapp:0.17.0");
         driver = new SelendroidDriver(caps);
     }
 
