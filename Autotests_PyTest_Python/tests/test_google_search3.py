@@ -16,7 +16,7 @@ class TestGoogleSearch:
         tester = GoogleSteps(self.driver)
         tester.setValueInSearch("GeForce 1650")
         result = tester.getCountResultSearch()
-        assert result != 0, "Количество найденых ответов должно быть больше 0"
+        assert result > 0, "Количество найденых ответов должно быть больше 0"
 
     def teardown_method(self):
         self.driver.close()
