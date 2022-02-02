@@ -3,7 +3,7 @@ from selenium import webdriver
 from support.PageObjects.GooglePage import GooglePage
 from support.StepObjects.GoogleSteps import GoogleSteps
 
-def test_browser():
+def test_search():
     driver = webdriver.Chrome(executable_path="C:/Selenium/chromedriver.exe")
     driver.get("https://www.google.com/")
     tester = GoogleSteps(driver)
