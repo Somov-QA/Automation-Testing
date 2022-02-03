@@ -3,17 +3,21 @@ from selenium import webdriver
 from support.PageObjects.GooglePage import GooglePage
 from support.StepObjects.GoogleSteps import GoogleSteps
 
-# https://docs.pytest.org/en/6.2.x/xunit_setup.html
-# setup , test, teardown
 
-def setup_modile():
-    print("setup")
+@pytest.fixture()
+def init_driver():
+    # Setup
+    driver = webdriver.Chrome(executable_path="C:/Selenium/chromedriver.exe")
+    # Test
+    yield driver
+    # Teardown
+    driver.close()
+    driver.quit()
 
-def test_one():
-    print("test")
 
-def teardown_module():
-    print("teardown")
-
-if __name__ == "__main__":
-    pytest.main(["-s", "test_google_search2.py"])
+def test_search(init_driver):
+    init_driver.get("https://www.google.com/")
+    tester = GoogleSteps(init_driver)
+    tester.setValueInSearch("GeForce 1650")
+    result = tester.getCountResultSearch()
+    assert result > 0, "Количество найденых ответов должно быть больше 0"
