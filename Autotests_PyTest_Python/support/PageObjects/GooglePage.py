@@ -1,11 +1,15 @@
+from selenium.webdriver.common.by import By
+
 class GooglePage:
     inputSearchName = "q"
     searchResultsClass = "g"
 
-    def getInputSearch(self):
-        inputSearch = self.driver.find_element_by_name(GooglePage.inputSearchName)
+    def getInputSearch(driver):
+        #inputSearch = driver.find_element_by_name(GooglePage.inputSearchName)
+        inputSearch = driver.find_element(By.NAME, GooglePage.inputSearchName)
         return inputSearch
 
-    def getListResultsSearch(self):
-        searchResult = self.driver.find_elements_by_class_name(GooglePage.searchResultsClass)
+    def getListResultsSearch(driver):
+        #searchResult = driver.find_elements_by_class_name(GooglePage.searchResultsClass)
+        searchResult = driver.find_elements(By.CLASS_NAME, GooglePage.searchResultsClass)
         return searchResult

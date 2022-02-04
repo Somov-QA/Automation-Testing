@@ -4,7 +4,7 @@ from support.PageObjects.GooglePage import GooglePage
 from support.StepObjects.GoogleSteps import GoogleSteps
 
 def test_search():
-    driver = webdriver.Chrome(executable_path="C:/Selenium/chromedriver.exe")
+    driver = webdriver.Chrome(executable_path="C:/Selenium/chromedriver.exe") # устарело
     driver.get("https://www.google.com/")
     tester = GoogleSteps(driver)
     tester.setValueInSearch("GeForce 1650")
@@ -14,4 +14,5 @@ def test_search():
     driver.quit()
 
 if __name__ == '__main__':
-    pytest.main()
+    #pytest.main()
+    pytest.main(["-s -v", "test_google_search.py"])

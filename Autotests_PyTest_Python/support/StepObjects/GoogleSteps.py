@@ -13,12 +13,12 @@ class GoogleSteps:
         self.driver = webdriver
 
     def setValueInSearch(self, value):
-        searchField = GooglePage.getInputSearch(self)
+        searchField = GooglePage.getInputSearch(self.driver)
         searchField.send_keys(value)
         searchField.send_keys(Keys.ENTER)
 
     def getCountResultSearch(self):
-        resultElements = GooglePage.getListResultsSearch(self)
+        resultElements = GooglePage.getListResultsSearch(self.driver)
         return len(resultElements)
 
     def find_element(self, locator, time=10):
